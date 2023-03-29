@@ -46,7 +46,7 @@ def IOU(A,B,binary=True):
         num = np.sum(num.astype(int))
         den = a | b
         den = np.sum(den.astype(int))
-        IOU = float(num)/den
+        iou = float(num)/den
     
     # Weighted IOU
     else:
@@ -57,7 +57,7 @@ def IOU(A,B,binary=True):
         # Calculate weighted IOU
         num = np.sum(np.min(stack,axis=2))
         den = np.sum(np.max(stack,axis=2))
-        IOU = float(num)/den
+        iou = float(num)/den
     
     # Return Results
-    return IOU
+    return iou
