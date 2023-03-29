@@ -19,7 +19,7 @@ def saveSeg(filename,seg,h,correct_limb_brightening,resize_param,
             image_preprocess=None):
     '''
     Save Function for use in collaboration with ACWE output generated using 
-    acweFunctions_v4.
+    acweFunctions_v4 or greater.
     
     Parameters
     ----------
@@ -144,8 +144,8 @@ def saveSeg(filename,seg,h,correct_limb_brightening,resize_param,
 def openSeg(filename):
     '''
     Open final acwe segmentation file function. This function is fully
-    compatible with segmentations saved using acweSaveSeg_v3.py and 
-    acweSaveSeg_v2.
+    compatible with segmentations saved using acweSaveSeg_v2.py and 
+    later.
 
     Parameters
     ----------
