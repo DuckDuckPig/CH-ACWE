@@ -42,7 +42,7 @@ dataFolder  = '/home/jgra/Coronal Holes/newDataset/' # Update to reflect Dataset
 traceFolder = os.path.join(ROOT_DIR, 'DatasetTools/DownloadLists/')
 CR          = 'CR2133' # Update to reflect chosen Carrington Rotation
 
-# SaveFolder - Update to refect location where data will be saved 
+# SaveFolder - Update to reflect location where data will be saved 
 saveFolder = '/mnt/coronal_holes/Code Paper I Observations/ConMapStandardDefault/'
 
 # ACWE Prefix
