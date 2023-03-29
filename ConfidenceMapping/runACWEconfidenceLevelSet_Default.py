@@ -38,11 +38,11 @@ from ACWE_python_spring_2023 import acweFunctions_v6, acweSaveSeg_v5
 
 # Dataset
 # Dataset folders
-dataFolder  = '/home/jgra/Coronal Holes/newDataset/'
+dataFolder  = '/home/jgra/Coronal Holes/newDataset/' # Update to reflect Dataset Location
 traceFolder = os.path.join(ROOT_DIR, 'DatasetTools/DownloadLists/')
-CR          = 'CR2133'
+CR          = 'CR2133' # Update to reflect chosen Carrington Rotation
 
-# SaveFolder
+# SaveFolder - Update to refect location where data will be saved 
 saveFolder = '/mnt/coronal_holes/Code Paper I Observations/ConMapStandardDefault/'
 
 # ACWE Prefix
