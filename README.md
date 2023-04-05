@@ -4,7 +4,7 @@ This is an implementation of active contours without edges (ACWE) on solar extre
 Requirements: [environment.yml](environment.yml)  
 This environment file specifies the packages necessary to implement all code contained within this repository, including packages necessary for downloading the dataset, generating segmentations (including confidence maps), and analyzing segmentation results.
 
-## Downloading Dataset
+## Downloading the Dataset
 The dataset can be downloaded, and new dataset can be created using the the tools provided in the `DatasetTools` folder.
 
 - `DownloadLists`: This folder contains an organized lists of the dataset. These lists are organized into four `.csv` files, one for each Carrington Rotation (CR).
