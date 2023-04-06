@@ -76,7 +76,7 @@ Note:
 ## Analyzing ACWE Segmentations
 Analysis of the stability and consistency of ACWE can be performed using the following tools.
 
-### Spatial Reslution Effects
+### Spatial Resolution Effects
 The tools in the folder `Scaled/Analysis/` can be used to to determine the effect that spatial decimation of the input image has on final segmentation.
 
 - The script `analizeACWEscaledDefault.py` generates an `.npz` file which outlines the similarity of segmentation at the specified scales, compared to an ACWE segmentation generated from the EUV image at full scale. 
@@ -87,3 +87,13 @@ The tools in the folder `Scaled/Analysis/` can be used to to determine the effec
 - The Jupyter Notebook `Scaling Samples.ipynb` will generate, display, and save a figure showing the effects of spatial decimation for the files specified in the second cell \(`In[2]`\)
   - The figures will be saved in a folder within the project space that the notebook creates
   - User will need to adjust the variables in the second cell (`In[2]`) to point to the correct directories.
+
+### Effects Across Small Temporal Changes
+The tools in the folder `TemporalEffects/Analysis/` can be used to determine the consistency of ACWE segmentation across short time spans where CH evolution is expected to be minimal. This can be used to determine how consistent ACWE is in identifying and segmenting CH regions.
+
+- The script `analizeTempEffects.py` generates an `.npz` file which outlines the similarity of segmentation at the specified scale (the default 1/8th spatial resolution), compared to ACWE segmentation at the same scale generated from all EUV images in the same CR that are within +-12 hours. 
+  - This script will return the IOU, SSIM, GCE, and LCE for each segmentation compared to the succeeding and preceding 12 hours of segmentations.
+  - Before running this script be sure to adjust the variables in the `Key Variables` cell (`In[2]`) to point to the correct directories.
+- The Jupyter Notebook `visulization_earlyData.ipynb` generates a plot from the data created by `analizeTempEffects.py` for a block of CRs. 
+- The Jupyter Notebook `visulization_earlyData.ipynb` generates a plot from the data created by `analizeTempEffects.py` for the specific CR the user chooses in the `Key Variables` cell.
+- The Jupyter Notebook `visulization_IndividualExamples-SingleCR.ipynb` generates a plot showing the IOU into the future for each user-specified entry in the user-specified CR. Both variables are in the `Key Variables` cell. 
