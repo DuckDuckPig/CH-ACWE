@@ -97,3 +97,10 @@ The tools in the folder `TemporalEffects/Analysis/` can be used to determine the
 - The Jupyter Notebook `visulization_earlyData.ipynb` generates a plot from the data created by `analizeTempEffects.py` for a block of CRs. 
 - The Jupyter Notebook `visulization_earlyData.ipynb` generates a plot from the data created by `analizeTempEffects.py` for the specific CR the user chooses in the `Key Variables` cell.
 - The Jupyter Notebook `visulization_IndividualExamples-SingleCR.ipynb` generates a plot showing the IOU into the future for each user-specified entry in the user-specified CR. Both variables are in the `Key Variables` cell. 
+
+### Effects of Confidence Map Optimization 
+The standard implementation of ACWE confidence maps optimizes ensemble generation by relying on the previous finalized segmentation as input for generating the next segmentation in the ensemble. In order to determine how this process effects final segmentation quality, the following tools are provided.
+
+- The script `TimeCheck.py` can be used to determine the speed increase offered by the optimized confidence map process (`runACWEconfidenceLevelSet_Default.py`) over the non-optimized approach (`runACWEconfidenceIndependent_Old.py`).
+  - In order to run this script the user will need to un-comment, in `runACWEconfidenceLevelSet_Default.py` and `runACWEconfidenceIndependent_Old.py`, all blocks with the header `Time` as well as the variables in the `Time ACWE` section of the `Key Variables` cell ***prior*** to running either script on the specified CR.
+  - The variable `CR` in the `Key Variables` cell must match across all three aforementioned scripts.
