@@ -1,7 +1,7 @@
 # CH-ACWE
 This is an implementation of active contours without edges (ACWE) on solar extreme ultraviolet (EUV) images from the Atmospheric Imager Assembly aboard the Solar Dynamics Observatory (SDO-AIA). This implementation includes the ability to generate Confidence Maps based on the homogeneity of each region with respect to the core of the observed region.
 
-Requirements: [environment.yml](environment.yml)  
+Requirements: [environment.yml](environment.yml)
 This environment file specifies the packages necessary to implement all code contained within this repository, including packages necessary for downloading the dataset, generating segmentations (including confidence maps), and analyzing segmentation results.
 
 ## Downloading the Dataset
@@ -113,3 +113,14 @@ The standard implementation of ACWE confidence maps optimizes ensemble generatio
 - The jupyter notebook `ConmapSamples.ipynb` will generate, display, and save visualizations of the confidence maps that exist for the files specified in the second cell \(`In[2]`\)
   - The figures will be saved in a folder within the project space that the notebook creates
   - User will need to adjust the variables in the second cell (`In[2]`) to point to the correct directories.
+
+### Confidence Map Change of Target Analsis
+The folder `ConfidenceMapping/AnalysisGrowthAndIntensity/` contains tools to evaulate the behaviour of the ensemble of segmentations used to generate confidence maps to help identify the characteristics that can be used to find and correct change of target cases.
+
+- The script `analizeGrowthAndIntensity.py`compares segmentations to the input seed to allow the user to determine what differences exist between change of target cases and valid segmentations.
+  - The script will report on the intensity of the input seed and each segmentation, providing min, mean, and max for each.
+  - The script will report on the area of the input seed and each segmetnation, as well as the percentage of the initial seed that is retained in each segmentation
+  - Before running this script be sure to adjust the variables in the `Key Variables` cell (`In[2]`) to point to the correct directories.
+- The Jupyter Notebook `Growth Rate and mean intensity_SingleCR.ipynb` reports the results from `analizeGrowthAndIntensity.py` for the user-specified CR.
+- The Jupyter Notebook `Change of Target Methology Check 5percent.ipynb` reports the list of change of target cases that were identified via the method implemented in the `smartConMap` function.
+- The Jupyter Notebooks `Special Cases CR2099.ipynb` and `Special Cases CR2133.ipynb` provide figures for the specified cases, showing the effects of the `smartConMap` function. These examples include genuine cases of change of target, as well as cases without change of target to ensure the method operates properly.
