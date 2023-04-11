@@ -28,6 +28,9 @@ The dataset can be downloaded, and new datasets can be created, using the the to
   - User will need to register their email at [http://jsoc.stanford.edu/ajax/register_email.html](http://jsoc.stanford.edu/ajax/register_email.html) and add that email to the appropriate variable in the `Key Variables` cell.
 
 ## Generating ACWE Segmentations
+
+![ACWE Segmentation Sample](/Figures/ReadMe/aia.lev1_euv_12s.2010-09-18T000008Z.193.image_lev1.fits.png?raw=true "ACWE Segmentation Sample")
+
 ### General Tools
 The folder `ACWE_python_spring_2023` contains functions for running ACWE and saving the results.
 
