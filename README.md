@@ -11,7 +11,7 @@ The dataset can be downloaded, and new datasets can be created, using the the to
 - `Carrington Rotation Start Dates.csv`: This file is a list of the start dates for each Carrington Rotation from CR -10 through CR 2300. This file is used by `DownloadByRotation.py` for both downloading and organizing the dataset.
 - `DataManagmentTools.py`: Tools/functions for formatting dates to allow for request of data from [jsoc.stanford.edu](jsoc.stanford.edu).
 - `DownloadByRotation.py`: Download `aia.lev1_euv_12s` and `hmi.M_720s` images at a 1 hour cadence for the specified Carrington rotation(s). 
-  - This script will attempt to omit any time frame wherein at least one file is missing or does not and have a 'QUALITY' key of '0'. 
+  - This script will attempt to omit any time frame wherein at least one file is missing or does not and have a `QUALITY` key of `0`. 
   - User will need to adjust the variables in the `Key Variables` cell (`In[2]`) to point to the correct directories.
   - User will need to register their email at [http://jsoc.stanford.edu/ajax/register_email.html](http://jsoc.stanford.edu/ajax/register_email.html) and add that email to the appropriate variable in the `Key Variables` cell.
   - This script can be used to speed up the process of rebuilding the dataset. This is achieved by
@@ -46,7 +46,7 @@ The folder `ACWE_python_spring_2023` contains functions for running ACWE and sav
   - Upscale a single segmentation using `upscale` 
   - Both functions take in the ACWE header and the segmentation or confidence map and return the same segmentation or confidence map, upscaled to match the resolution of the original EUV image.
 - `acweSaveSeg_v5.py`: Tools/functions for saving and opening segmentations. 
-  - The function `saveSeg` takes in the header of the original EUV image, the final segmentation(s), and the list of ACWE parameters to generate an .npz file which saves the final segmentation with a header outlining the ACWE parameters and a copy of the header for the original EUV image. 
+  - The function `saveSeg` takes in the header of the original EUV image, the final segmentation(s), and the list of ACWE parameters. It generates an .npz file which saves the final segmentation with a header outlining the ACWE parameters and a copy of the header for the original EUV image. 
   - The function `openSeg` opens and returns the header of the original EUV image, as a dictionary, the header outlining the options used to generate the ACWE segmentation, organized as a dictionary, and the final ACWE segmentation(s).
   - Both functions work for both single segmentations and for confidence maps.
 
@@ -122,7 +122,7 @@ The folder `ConfidenceMapping/AnalysisGrowthAndIntensity/` contains tools to eva
 
 - The script `analizeGrowthAndIntensity.py`compares segmentations to the input seed to allow the user to determine what differences exist between change of target cases and valid segmentations.
   - The script will report on the intensity of the input seed and each segmentation, providing min, mean, and max for each.
-  - The script will report on the area of the input seed and each segmetnation, as well as the percentage of the initial seed that is retained in each segmentation
+  - The script will report the area of the input seed, area of each segmetnation, and the percentage of the initial seed that is retained in each segmentation
   - Before running this script be sure to adjust the variables in the `Key Variables` cell (`In[2]`) to point to the correct directories.
 - The Jupyter Notebook `Growth Rate and mean intensity_SingleCR.ipynb` reports the results from `analizeGrowthAndIntensity.py` for the user-specified CR.
 - The Jupyter Notebook `Change of Target Methology Check 5percent.ipynb` reports the list of change of target cases that were identified via the method implemented in the `smartConMap` function.
