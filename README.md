@@ -23,7 +23,7 @@ The dataset can be downloaded, and new datasets can be created, using the the to
     6. Running `RebuildDataset.py` with `traceFolder = 'DownloadLists/'` to download any missing files
 - `GapCheck.py`: Inform the user as to the largest hour gap between entries in the specified CR within the dataset.
 - `RebuildDataset.py`: Find and download any file that is missing from the dataset folder.
-  - This script will rebuild the dataset direcly from the specified present in the `DownloadLists` folder.
+  - This script will rebuild the dataset direcly from the specified file present in the `DownloadLists` folder.
   - User will need to adjust the variables in the `Key Variables` cell (`In[2]`) to point to the correct directories.
   - User will need to register their email at [http://jsoc.stanford.edu/ajax/register_email.html](http://jsoc.stanford.edu/ajax/register_email.html) and add that email to the appropriate variable in the `Key Variables` cell.
 
