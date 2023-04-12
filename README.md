@@ -102,19 +102,19 @@ The tools in the folder `TemporalEffects/Analysis/` can be used to determine the
 - The Jupyter Notebook `visulization_IndividualExamples-SingleCR.ipynb` generates a plot showing the IOU into the future for each user-specified entry in the user-specified CR. Both variables are in the `Key Variables` cell. 
 
 ### Effects of Confidence Map Optimization 
-The standard implementation of ACWE confidence maps optimizes ensemble generation by relying on the previous finalized segmentation as input for generating the next segmentation in the ensemble. In order to determine how this process effects final segmentation quality, the following tools are provided.
+The standard implementation of ACWE confidence maps optimizes ensemble generation by relying on the previous finalized segmentation as input for generating the next segmentation in the ensemble. In order to determine how this process effects final segmentation quality, the following tools are provided:
 
 - The script `TimeCheck.py` can be used to determine the speed increase offered by the optimized confidence map process (`runACWEconfidenceLevelSet_Default.py`) over the non-optimized approach (`runACWEconfidenceIndependent_Old.py`).
   - In order to run this script the user will need to un-comment, in `runACWEconfidenceLevelSet_Default.py` and `runACWEconfidenceIndependent_Old.py`, all blocks with the header `Time` as well as the variables in the `Time ACWE` section of the `Key Variables` cell ***prior*** to running either script on the specified CR.
   - The variable `CR` in the `Key Variables` cell must match across all three aforementioned scripts.
 - The script `analizeConmapSim.py`, in the folder `ConfidenceMapping/AnalysisInternal/`, performs three analyses:
   1. Determine, using weighted IOU, SSIM, GCE, and LCE how similar the confidence maps generated using the optimized approach are to confidence maps generated from an ensemble of independent segmentations.
-  2. Determine, for the confidence maps generated from an ensemble of independent segmentations, what area of each segmentation was not present in the previous segmentation, and the area that was not carried over to the succeeding segmentation.
-  3. Determine, for the  optimized confidence map process, what area of each segmentation was not present in the previous segmentation, and was not carried over to the succeeding segmentation.
+  2. Determine, for the confidence maps generated from an ensemble of independent segmentations, the area of each segmentation that was not present in the previous segmentation, and the area that was not carried over to the succeeding segmentation.
+  3. Determine, for the  optimized confidence map process, the area of each segmentation that was not present in the previous segmentation, and the area that was not carried over to the succeeding segmentation.
   - Before running this script be sure to adjust the variables in the `Key Variables` cell (`In[2]`) to point to the correct directories.
-- The jupyter notebook `ConMapStats_FullData.ipynb` (in the folder `ConfidenceMapping/AnalysisInternal/`), reports on all analyses performed in `analizeConmapSim.py`
-- The jupyter notebook `ConmapSamples.ipynb` will generate, display, and save visualizations of the confidence maps that exist for the files specified in the second cell \(`In[2]`\)
-  - The figures will be saved in a folder within the project space that the notebook creates
+- The jupyter notebook `ConMapStats_FullData.ipynb` (in the folder `ConfidenceMapping/AnalysisInternal/`), reports on all analyses performed in `analizeConmapSim.py`.
+- The jupyter notebook `ConmapSamples.ipynb` (in the folder `ConfidenceMapping/AnalysisInternal/`) will generate, display, and save visualizations of the confidence maps that exist for the files specified in the second cell \(`In[2]`\).
+  - The figures will be saved in a folder within the project space that the notebook creates.
   - User will need to adjust the variables in the second cell (`In[2]`) to point to the correct directories.
 
 ### Confidence Map Change of Target Analsis
@@ -122,7 +122,7 @@ The folder `ConfidenceMapping/AnalysisGrowthAndIntensity/` contains tools to eva
 
 - The script `analizeGrowthAndIntensity.py`compares segmentations to the input seed to allow the user to determine what differences exist between change of target cases and valid segmentations.
   - The script will report on the intensity of the input seed and each segmentation, providing min, mean, and max for each.
-  - The script will report the area of the input seed, area of each segmetnation, and the percentage of the initial seed that is retained in each segmentation
+  - The script will report the area of the input seed, area of each segmentation, and the percentage of the initial seed that is retained in each segmentation.
   - Before running this script be sure to adjust the variables in the `Key Variables` cell (`In[2]`) to point to the correct directories.
 - The Jupyter Notebook `Growth Rate and mean intensity_SingleCR.ipynb` reports the results from `analizeGrowthAndIntensity.py` for the user-specified CR.
 - The Jupyter Notebook `Change of Target Methology Check 5percent.ipynb` reports the list of change of target cases that were identified via the method implemented in the `smartConMap` function.
@@ -139,9 +139,9 @@ The folder `ConfidenceMapping/AnalysisMagentogram/` contains tools used to deter
   - Before running this script be sure to adjust the variables in the `Key Variables` cell (`In[2]`) to point to the correct directories.
 
 ### Intensity and Dynamic range Effects
-The `Intensity/` and the `Intensity/Analysis/` subfolder contain tools used to determine the effects that compressing SDO-AIA observations using poplar image formats (such as `.png`) have on the quality of ACWE segmentations.
+The `Intensity/` folder and the `Intensity/Analysis/` subfolder contain tools used to determine the effects that compressing SDO-AIA observations by represetiing all intesnity using 265 discretized values (such as `.png`) have on the quality of ACWE segmentations.
 
-- The script `runIntensityInvDefault.py` generates a series of segmentations. Each segmentation, is generated from a copy of the EUV image that has been remapped to `uint8` (similar to poplar image formats like `.png` and `jpeg`) via various remapping schemes.
+- The script `runIntensityInvDefault.py` generates a series of segmentations. Each segmentation is generated from a copy of the EUV image that has been remapped to `uint8` (similar to popular image formats like `.png` and `jpeg`) via various remapping schemes.
   - User will need to adjust the variables in the `Key Variables` cell (`In[2]`) to point to the correct directories and desired EUV wavelength (193 angstroms is the assumed default).
   - The script will assume that the data are organized by CR, with a sub directory for each record time in the `.csv` file in the `DownloadLists` subfolder within the `DatasetTools` directory. Both `DownloadByRotation.py` and `RebuildDataset.py` will organize the dataset appropriately.
   - The script relies on the functions in `pngScale2.py`
@@ -155,5 +155,5 @@ The `Intensity/` and the `Intensity/Analysis/` subfolder contain tools used to d
 - The Jupyter Notebook `visulization_earlyData-BW.ipynb` generates a box and whisker plot for a block of CRs, from the data generated by `analizeIntInvEffects.py`.
 - The Jupyter Notebook `visulization_singleCR-BW.ipynb` generates a box and whisker plot for the specific CR the user chooses in the `Key Variables` cell, from the data generated by `analizeIntInvEffects.py`
 - The Jupyter Notebook `Intensity Samples.ipynb` will generate, display, and save a figure showing the effects of intensity remapping and dynamic range decimation for the files specified in the second cell \(`In[2]`\)
-  - The figures will be saved in a folder within the project space that the notebook creates
+  - The figures will be saved in a folder within the project space that the notebook creates.
   - User will need to adjust the variables in the second cell (`In[2]`) to point to the correct directories.
