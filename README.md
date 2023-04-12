@@ -109,7 +109,7 @@ The standard implementation of ACWE confidence maps optimizes ensemble generatio
   - The variable `CR` in the `Key Variables` cell must match across all three aforementioned scripts.
 - The script `analizeConmapSim.py`, in the folder `ConfidenceMapping/AnalysisInternal/`, performs three analyses:
   1. Determine, using weighted IOU, SSIM, GCE, and LCE how similar the confidence maps generated using the optimized approach are to confidence maps generated from an ensemble of independent segmentations.
-  2. Determine, for the confidence maps generated from an ensemble of independent segmentations, what area of each segmentation was not present in the previous segmentation, and was not carried over to the succeeding segmentation.
+  2. Determine, for the confidence maps generated from an ensemble of independent segmentations, what area of each segmentation was not present in the previous segmentation, and the area that was not carried over to the succeeding segmentation.
   3. Determine, for the  optimized confidence map process, what area of each segmentation was not present in the previous segmentation, and was not carried over to the succeeding segmentation.
   - Before running this script be sure to adjust the variables in the `Key Variables` cell (`In[2]`) to point to the correct directories.
 - The jupyter notebook `ConMapStats_FullData.ipynb` (in the folder `ConfidenceMapping/AnalysisInternal/`), reports on all analyses performed in `analizeConmapSim.py`
