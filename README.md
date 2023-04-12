@@ -10,6 +10,10 @@ The dataset can be downloaded, and new datasets can be created, using the the to
 - `DownloadLists`: This folder contains an organized lists of the dataset. These lists are organized into four `.csv` files, one for each Carrington Rotation (CR).
 - `Carrington Rotation Start Dates.csv`: This file is a list of the start dates for each Carrington Rotation from CR -10 through CR 2300. This file is used by `DownloadByRotation.py` for both downloading and organizing the dataset.
 - `DataManagmentTools.py`: Tools/functions for formatting dates to allow for request of data from [jsoc.stanford.edu](jsoc.stanford.edu).
+- `RebuildDataset.py`: Find and download any file that is missing from the dataset folder.
+  - This script will rebuild the dataset direcly from the specified file present in the `DownloadLists` folder.
+  - User will need to adjust the variables in the `Key Variables` cell (`In[2]`) to point to the correct directories.
+  - User will need to register their email at [http://jsoc.stanford.edu/ajax/register_email.html](http://jsoc.stanford.edu/ajax/register_email.html) and add that email to the appropriate variable in the `Key Variables` cell.
 - `DownloadByRotation.py`: Download `aia.lev1_euv_12s` and `hmi.M_720s` images at a 1 hour cadence for the specified Carrington rotation(s). 
   - This script will attempt to omit any time frame wherein at least one file is missing or does not and have a `QUALITY` key of `0`. 
   - User will need to adjust the variables in the `Key Variables` cell (`In[2]`) to point to the correct directories.
@@ -22,10 +26,6 @@ The dataset can be downloaded, and new datasets can be created, using the the to
     5. Deleting the temporary subfolder
     6. Running `RebuildDataset.py` with `traceFolder = 'DownloadLists/'` to download any missing files
 - `GapCheck.py`: Inform the user as to the largest hour gap between entries in the specified CR within the dataset.
-- `RebuildDataset.py`: Find and download any file that is missing from the dataset folder.
-  - This script will rebuild the dataset direcly from the specified file present in the `DownloadLists` folder.
-  - User will need to adjust the variables in the `Key Variables` cell (`In[2]`) to point to the correct directories.
-  - User will need to register their email at [http://jsoc.stanford.edu/ajax/register_email.html](http://jsoc.stanford.edu/ajax/register_email.html) and add that email to the appropriate variable in the `Key Variables` cell.
 
 ## Generating ACWE Segmentations
 
