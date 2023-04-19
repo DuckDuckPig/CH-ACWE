@@ -1,5 +1,5 @@
 # CH-ACWE
-This is an implementation of active contours without edges (ACWE) on solar extreme ultraviolet (EUV) images from the Atmospheric Imager Assembly aboard the Solar Dynamics Observatory (SDO-AIA). This implementation includes the ability to generate Confidence Maps based on the homogeneity of each region with respect to the core of the observed region.
+This is an implementation of active contours without edges (ACWE) on solar extreme ultraviolet (EUV) images from the Atmospheric Imager Assembly aboard the Solar Dynamics Observatory (SDO-AIA). This implementation includes the ability to generate Confidence Maps based on the homogeneity of each region with respect to the core of the observed region. This code is related the paper `<insert link here>`.
 
 ## Requirements: [environment.yml](environment.yml)
 This environment file specifies the packages necessary to implement all code contained within this repository, including packages necessary for downloading the dataset, generating segmentations (including confidence maps), and analyzing segmentation results.
