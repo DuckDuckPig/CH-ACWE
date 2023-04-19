@@ -118,6 +118,7 @@ def smartConMap(SEG,ACWEHEADER,buffer=0.05,normalize=True,restoreScale=True,
                                                           {'BACKGROUND_WEIGHT':background_weights},
                                                           interpolation,
                                                           split,True)
+    # Combine Segmentations
     ConMap = np.sum(ConMap.astype(int),axis=0)
     
     # Normalize Map if User Requests
