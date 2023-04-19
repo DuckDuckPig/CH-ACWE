@@ -109,13 +109,22 @@ def smartConMap(SEG,ACWEHEADER,buffer=0.05,normalize=True,restoreScale=True,
             break
     
     # Generate Map
-    ConMap = SEG[indexList]
+    ConMap             = SEG[indexList]
     background_weights = background_weights[indexList]
     
     # Upscale if requested
     if restoreScale:
-        ConMap,init_mask = acweRestoreScale.upscaleConMap(ConMap,
-                                                          {'BACKGROUND_WEIGHT':background_weights},
+        
+        # Generate Micro Header with necessary Info
+        resize_param = ACWEHEADER['RESIZE_PARAM']
+        newHeader = {
+                    'RESIZE_PARAM'             : resize_param,
+                    'BACKGROUND_WEIGHT'        : background_weight,
+                    'INIT_MASK'                : init_mask
+                    }
+        
+        # Upscale
+        ConMap,init_mask = acweRestoreScale.upscaleConMap(ConMap,newHeader,
                                                           interpolation,
                                                           split,True)
     # Combine Segmentations
