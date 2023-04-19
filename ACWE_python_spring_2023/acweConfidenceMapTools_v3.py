@@ -110,14 +110,15 @@ def smartConMap(SEG,ACWEHEADER,buffer=0.05,normalize=True,restoreScale=True,
     
     # Generate Map
     ConMap = SEG[indexList]
-    ConMap = np.sum(ConMap.astype(int),axis=0)
     background_weights = background_weights[indexList]
     
     # Upscale if requested
     if restoreScale:
-        ConMap,init_mask = acweRestoreScale.upscaleConMap(SEG,ACWEHEADER,
+        ConMap,init_mask = acweRestoreScale.upscaleConMap(ConMap,
+                                                          {'BACKGROUND_WEIGHT':background_weights},
                                                           interpolation,
                                                           split,True)
+    ConMap = np.sum(ConMap.astype(int),axis=0)
     
     # Normalize Map if User Requests
     if normalize:
