@@ -90,6 +90,10 @@ The tools in the folder `Scaled/Analysis/` can be used to to determine the effec
 - The Jupyter Notebook `Scaling Samples.ipynb` will generate, display, and save a figure showing the effects of spatial decimation for the files specified in the second cell \(`In[2]`\)
   - The figures will be saved in a folder within the project space that the notebook creates
   - User will need to adjust the variables in the second cell (`In[2]`) to point to the correct directories.
+- The script `TimeCheckScaled.py`, which is located in the `Scaled/` folder, can be used to determine the speed increase offered by reducing the spatial resolution of the input EUV images.
+  - In order to run this script the user will need to un-comment, in `Scaled/runACWEscaledDefault.py` and `Standard/runACWEdefault.py`, all blocks with the header `Time` as well as the variables in the `Time ACWE` section of the `Key Variables` cell ***prior*** to running either script on the specified CR.
+  - The variable `CR` in the `Key Variables` cell must match across all three aforementioned scripts.
+  - The function assumes that the standard resolution segmentations were generated using `Standard/runACWEdefault.py` and will search the `Standard/` folder for data related to the time needed to generate the standard resolution segmentations.
 
 ### Effects Across Small Temporal Changes
 The tools in the folder `TemporalEffects/Analysis/` can be used to determine the consistency of ACWE segmentation across short time spans where CH evolution is expected to be minimal. This can be used to determine how consistent ACWE is in identifying and segmenting CH regions.
