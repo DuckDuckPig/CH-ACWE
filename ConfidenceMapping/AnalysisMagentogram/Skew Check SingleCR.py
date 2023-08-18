@@ -12,6 +12,7 @@ import os
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.gridspec import GridSpec
 import glob
 from astropy.io import fits
 import sunpy.map
@@ -125,7 +126,7 @@ for i in range(len(files)):
     for j in range(len(SEG2)):
         
         fileFolder = saveTo + CR + '/' + fileTime + '/'
-        title = fileFolder + os.path.basename(file) + '.CH_Group' + str(j+1) + '.png'
+        title = fileFolder + os.path.basename(file) + '.CH_Group' + str(j+1) + '.jpeg'
         if not os.path.exists(title):
             
             if not HaveSEG:
@@ -151,31 +152,33 @@ for i in range(len(files)):
                 HaveSEG = True
         
             # Prepare Plot
-            plt.figure(figsize=[80,20])
-            plt.rcParams.update({'font.size': 60})
+            plt.figure(figsize=[5,2],dpi=300)
+            plt.rcParams.update({'font.size': 9})
             plt.suptitle(os.path.basename(AIA))
 
             # Plot Image
             plt.subplot(1,3,1)
             plt.imshow(np.flip(Idsp,axis=0),cmap ='gray')
+            plt.rcParams.update({'font.size': 3})
             plt.title('Observation')
             plt.axis(False)
+            plt.subplots_adjust(left=0,right=.99,wspace=.5,top=.8,bottom=0.2)
 
             # Plot Confidence Map
             plt.subplot(1,3,2)
             plt.imshow(np.flip(SEG2[j]/BW[j],axis=0),vmin=0,vmax=1,interpolation='None')
-            plt.colorbar(shrink=0.95)
-            plt.contour(np.flip(sd_mask,axis=0),0,colors='r')
+            plt.colorbar(fraction=0.046, pad=0.04)
+            plt.contour(np.flip(sd_mask,axis=0),0,colors='r',linewidths=.2)
             plt.axis(False)
             s = 'CH Group ' + str(j+1) + ' Confidence Map'
-            plt.rcParams.update({'font.size': 50})
+            #plt.rcParams.update({'font.size': 3.13})
             plt.title(s)
 
             # Plot Skewness, Weighted & Unweighted
             plt.subplot(1,3,3)
             xaxis = np.asarray(range(1,BW[j].astype(int)+1))/BW[j]
-            plt.plot(xaxis,Skew[j,0],label='unweighted',linewidth=4)
-            plt.plot(xaxis,Skew[j,1],label='weighted',linewidth=4)
+            plt.plot(xaxis,Skew[j,0],label='unweighted',linewidth=1)
+            plt.plot(xaxis,Skew[j,1],label='weighted',linewidth=1)
             plt.xlabel('Confidence')
             plt.ylabel('Skew')
             s = 'CH Group ' + str(j+1) + ' Skew'
@@ -187,10 +190,10 @@ for i in range(len(files)):
                 os.makedirs(saveTo+CR+'/')
             if not os.path.exists(fileFolder):
                 os.mkdir(fileFolder)
-            title = fileFolder + os.path.basename(file) + '.CH_Group' + str(j+1) + '.png'
-            plt.savefig(title)
+            title = fileFolder + os.path.basename(file) + '.CH_Group' + str(j+1) + '.jpeg'
+            plt.savefig(title,dpi=300)
             plt.close()
-
+            
 # In[6]
 # End Process
 
