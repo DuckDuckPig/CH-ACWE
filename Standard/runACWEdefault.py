@@ -33,6 +33,8 @@ ROOT_DIR = os.path.abspath("../")
 sys.path.append(ROOT_DIR)
 from ACWE_python_spring_2023 import acweFunctions_v6, acweSaveSeg_v5
 
+# import time
+
 # In[2]:
 # Key Variables
 
@@ -70,6 +72,9 @@ verbose = True  # Inform user about which image is being processed
 # ACWE on 211 Data
 # acweChoice = 211; alpha = 0.3; background_weight = 1/100. # Old - refine parameters
 
+# # Time ACWE
+# timeFile = os.path.join(ROOT_DIR,'Standard/') + CR + '_timeStandard.csv'
+
 # In[3]:
 # Open file and get list of images
 
@@ -88,6 +93,11 @@ acweChoice = np.where(keys == acweChoice)[0][0]
 crSaveFolder = saveFolder + CR + '/'
 if not os.path.exists(crSaveFolder):
     os.makedirs(crSaveFolder)
+    
+# # Prepare time file
+# if not os.path.exists(timeFile):
+#     with open(timeFile,'w+') as f:
+#         f.write('file,time\n')
     
 # In[5]:
 # Perform ACWE
@@ -148,6 +158,9 @@ for file in data[keys[acweChoice]]:#[len(data[keys[acweChoice]])-1:0:-1]:
         # Inform user
         if verbose:
             print('    Running ACWE')
+            
+        # # Time
+        # start = time.time()
         
         # Run ACWE
         seg,alphar,m = acweFunctions_v6.run_acwe(I,H,resize_param,
@@ -158,6 +171,11 @@ for file in data[keys[acweChoice]]:#[len(data[keys[acweChoice]])-1:0:-1]:
                                                    correctLimbBrightening,
                                                    rollingAlpha,
                                                    fillInitHoles)
+        
+        # # Time
+        # end = time.time()
+        # timeTotal = end-start
+        # timeTotal = str(timeTotal)
         
         # Inform User
         if verbose:
@@ -170,6 +188,11 @@ for file in data[keys[acweChoice]]:#[len(data[keys[acweChoice]])-1:0:-1]:
                                foreground_weight,background_weight,m,
                                init_mask_method,fillInitHoles,alpha,
                                alphar,narrowband,N)
+        
+        # # Time
+        # row = acweFile + ',' + timeTotal + '\n'
+        # with open(timeFile,'a+') as f:
+        #     f.write(row)
         
 # In[6]:
 # End Process
