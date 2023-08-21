@@ -143,7 +143,7 @@ The folder `ConfidenceMapping/AnalysisMagentogram/` contains tools used to deter
   - Before running this script be sure to adjust the variables in the `Key Variables` cell (`In[2]`) to point to the correct directories.
 
 ### Intensity and Dynamic range Effects
-The `Intensity/` folder and the `Intensity/Analysis/` subfolder contain tools used to determine the effects that compressing SDO-AIA observations by represetiing all intesnity using 265 discretized values (such as `.png`) have on the quality of ACWE segmentations.
+The `Intensity/` folder and the `Intensity/Analysis/` subfolder contain tools used to determine the effects that compressing SDO-AIA observations by representing all intesnity using 265 discretized values (such as `.png`) have on the quality of ACWE segmentations.
 
 - The script `runIntensityInvDefault.py` generates a series of segmentations. Each segmentation is generated from a copy of the EUV image that has been remapped to `uint8` (similar to popular image formats like `.png` and `jpeg`) via various remapping schemes.
   - User will need to adjust the variables in the `Key Variables` cell (`In[2]`) to point to the correct directories and desired EUV wavelength (193 angstroms is the assumed default).
