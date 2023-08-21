@@ -12,7 +12,6 @@ import os
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.gridspec import GridSpec
 import glob
 from astropy.io import fits
 import sunpy.map
@@ -159,7 +158,7 @@ for i in range(len(files)):
             # Plot Image
             plt.subplot(1,3,1)
             plt.imshow(np.flip(Idsp,axis=0),cmap ='gray')
-            plt.rcParams.update({'font.size': 3})
+            plt.rcParams.update({'font.size': 4.7})
             plt.title('Observation')
             plt.axis(False)
             plt.subplots_adjust(left=0,right=.99,wspace=.5,top=.8,bottom=0.2)
