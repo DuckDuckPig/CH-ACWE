@@ -29,6 +29,7 @@ ROOT_DIR = os.path.abspath("../../")
 # Import ACWE Tools
 sys.path.append(ROOT_DIR)
 from ACWE_python_spring_2023 import acweSaveSeg_v5
+from DatasetTools import DataManagmentTools as dmt
 
 # In[2]
 # Key Varibles
@@ -153,7 +154,7 @@ for i in range(len(files)):
             # Prepare Plot
             plt.figure(figsize=[5,2],dpi=300)
             plt.rcParams.update({'font.size': 9})
-            plt.suptitle(os.path.basename(AIA))
+            plt.suptitle(dmt.timeFormat(dmt.timeFromFilenameAIA(os.path.basename(AIA))))
 
             # Plot Image
             plt.subplot(1,3,1)
