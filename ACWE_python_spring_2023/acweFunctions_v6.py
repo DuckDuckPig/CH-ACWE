@@ -12,6 +12,7 @@ Edited on  Thu Apr  1 14:25:54 2021 - Adjusted for STEREO A and B
            Thu May 26 16:52:18 2022 - Return Init Mask Without Hole Filling
            Mon Feb 20 14:42:47 2023 - Condenced to tools used in paper, with 
                                       aditinal documentation
+           Wed Feb  7 12:11:59 2024 - Corrected bug in stopping critera
 
 @author: jgra
 """
@@ -327,9 +328,9 @@ def itterate_acwe(I,im_size,sd_mask,m,foreground_weight=1,
             seg_diff_cum = seg_diff_cum + abs(seg_diff)
             # percentage of currently new pixels that have never changed
             # classes before
-            percent_new_diff = float((seg_diff_cum*(abs(seg_diff)==1)).sum())/\
-                               float((seg_diff_cum*(abs(seg_diff))>=1).sum()+\
-                               np.finfo(float).eps)*100  
+            percent_new_diff = float(((seg_diff_cum==1)*abs(seg_diff)).sum())/\
+                               float(((seg_diff_cum>=1)*abs(seg_diff)).sum()+\
+                               np.finfo(float).eps)*100 
             if verbose:
                 print(str(percent_diff) + ' ' + str(percent_new_diff))
             if percent_new_diff==0 | ~(seg.sum()>0):
@@ -475,9 +476,9 @@ def itterate_acwe_confidence_map(I,im_size,sd_mask,m,foreground_weight=1,
                 seg_diff_cum = seg_diff_cum + abs(seg_diff)
                 # percentage of currently new pixels that have never changed
                 # classes before
-                percent_new_diff = float((seg_diff_cum*(abs(seg_diff)==1)).sum())/\
-                                   float((seg_diff_cum*(abs(seg_diff))>=1).sum()+\
-                                   np.finfo(float).eps)*100  
+                percent_new_diff = float(((seg_diff_cum==1)*abs(seg_diff)).sum())/\
+                                   float(((seg_diff_cum>=1)*abs(seg_diff)).sum()+\
+                                   np.finfo(float).eps)*100 
                 if verbose:
                     print(str(percent_diff) + ' ' + str(percent_new_diff))
                 if percent_new_diff==0 | ~(seg.sum()>0):
