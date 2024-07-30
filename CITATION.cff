@@ -1,0 +1,46 @@
+cff-version: 1.2.0
+title: CH-ACWE
+message: 'If you use this software, please cite it as below.'
+type: software
+authors:
+  - given-names: Jeremy A.
+    family-names: Grajeda
+    affiliation: New Mexico State University
+    orcid: 'https://orcid.org/0009-0008-3189-8200'
+  - given-names: Laura E.
+    family-names: Boucheron
+    affiliation: New Mexico State University
+    email: lboucher@nmsu.edu
+    orcid: 'https://orcid.org/0000-0002-8187-1566'
+repository-code: 'https://github.com/DuckDuckPig/CH-ACWE'
+preferred-citation:
+  type: article
+  authors:
+  - given-names: Jeremy A.
+    family-names: Grajeda
+    affiliation: Klipsch School of Electrical and Computer Engineering, New Mexico State University, Las Cruces, NM, USA
+    orcid: 'https://orcid.org/0009-0008-3189-8200'
+  - given-names: Laura E.
+    family-names: Boucheron
+    affiliation: Klipsch School of Electrical and Computer Engineering, New Mexico State University, Las Cruces, NM, USA
+    email: lboucher@nmsu.edu
+    orcid: 'https://orcid.org/0000-0002-8187-1566'
+  - given-names: Michael S.
+    family-names: Kirk
+    affiliation: Heliophysics Space Division, Goddard Space Flight Center, National Aeronautics and Space Administration, Greenbelt, MD, USA
+    email: michael.s.kirk@nasa.gov
+    orcid: 'https://orcid.org/0000-0001-9874-1429'
+  - given-names: Andrew
+    family-names: Leisner
+    affiliation: Department of Physics and Astronomy, George Mason University, Fairfax, VA, USA
+    email: aleisner@gmu.edu
+    orcid: 'https://orcid.org/0000-0002-4752-7534'
+  - given-names: C. Nick
+    family-names: Arge
+    affiliation: Heliophysics Space Division, Goddard Space Flight Center, National Aeronautics and Space Administration, Greenbelt, MD, USA
+    email: charles.n.arge@nasa.gov
+    orcid: 'https://orcid.org/0000-0001-9326-3448'
+  journal: Sol Phys
+  title: 'Quantifying the Consistency and Characterizing the Confidence of Coronal Holes Detected by Active Contours Without Edges (ACWE)'
+  year: 2023
+  doi: '10.1007/s11207-023-02228-0'
