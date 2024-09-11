@@ -148,10 +148,10 @@ for i in range(startIndex,len(data)-1,RotCadence):
                 
                 # Generate Query to get Record Time and QUALITY information
                 AIAquery = client.query(AIArequest,seg=AIAsegment,key=reckeys)
-                HMIquery = client.query(AIArequest,seg=AIAsegment,key=reckeys.split(', ')[1])
+                HMIquery = client.query(HMIrequest,seg=HMIsegment,key=reckeys)
                 T_REC = AIAquery[0][reckeys.split(', ')[0]][0]
                 QUALITY = AIAquery[0][reckeys.split(', ')[1]]
-                QUALITY = np.hstack([QUALITY,HMIquery[0][reckeys.split(', ')[1]][0]])
+                QUALITY = np.hstack([QUALITY,HMIquery[0][reckeys.split(', ')[1]]])
                 
                 # Download if Data are of Expected Quality and Exist
                 if len(QUALITY) == ttlFiles and np.max(QUALITY) == 0:
